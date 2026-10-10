@@ -1,0 +1,55 @@
+/* Story Page tokens.
+   Every colour, font and shadow on a story page comes from this file. Components never use raw hex values,
+   with one exception: the four syntax colours inside .term, which stay the same in both themes.
+
+   Dark mode is declared twice on purpose:
+   1. @media (prefers-color-scheme: dark), guarded by :root:not([data-theme="light"]), follows the OS
+   2. :root[data-theme="dark"] forces dark when a host or toggle sets the attribute
+   Keep both blocks identical. */
+
+:root{
+  /* surfaces and text */
+  --paper:#F1F4F2;        /* page background */
+  --panel:#FBFCFA;        /* cards, mocks, diagram frames */
+  --ink:#12221F;          /* body text, headings, strong rules */
+  --muted:#56696A;        /* secondary text, labels, captions */
+  --line:#D3DCD8;         /* hairlines, borders, dividers */
+
+  /* meaning */
+  --accent:#1B6B57;       /* the subject of the story: links, live, "ours", the highlighted box */
+  --accent-soft:#DCEBE4;  /* tint behind accent text */
+  --gold:#9A6516;         /* planned, illustrative, human review, highlight marks */
+  --gold-soft:#F4E6CB;
+  --risk:#A9432E;         /* problems, at-risk, dropped, limits */
+  --risk-soft:#F6E1DA;
+
+  /* terminal mock (dark in both themes) */
+  --term:#0E1C1B; --term-fg:#D5E5E0; --term-dim:#7F9792; --term-ok:#63D1A8;
+
+  /* persona / series palette: one per person or data series, in this order */
+  --p1:#2D64C8; --p2:#1B6B57; --p3:#7448BC; --p4:#A9432E; --p5:#9A6516; --p6:#0B7F8F; --p7:#B0397A;
+
+  --shadow:0 1px 2px rgba(18,34,31,.06),0 8px 24px rgba(18,34,31,.06);
+
+  --f-display:'Bricolage Grotesque','Avenir Next','Segoe UI',sans-serif;
+  --f-body:'Source Sans 3','Segoe UI',Helvetica,Arial,sans-serif;
+  --f-mono:'JetBrains Mono',ui-monospace,Menlo,Consolas,monospace;
+
+  /* motion */
+  --ease-out:cubic-bezier(.2,.7,.2,1);   /* every entrance */
+  --ease-draw:cubic-bezier(.3,.7,.2,1);  /* bars and lines that draw themselves */
+}
+
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#0C1716; --panel:#132321; --ink:#E4EEEA; --muted:#93A8A3; --line:#26403B;
+  --accent:#5CC9A5; --accent-soft:#173A31; --gold:#E9B657; --gold-soft:#3A2E17;
+  --risk:#EE8A72; --risk-soft:#3D221B; --term:#07100F; --term-fg:#D5E5E0; --term-dim:#7F9792; --term-ok:#63D1A8;
+  --p1:#7DA6F2; --p2:#5CC9A5; --p3:#B497EE; --p4:#EE8A72; --p5:#E9B657; --p6:#5FC6D3; --p7:#EE8CC2;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.3); color-scheme:dark}}
+
+:root[data-theme="dark"]{
+  --paper:#0C1716; --panel:#132321; --ink:#E4EEEA; --muted:#93A8A3; --line:#26403B;
+  --accent:#5CC9A5; --accent-soft:#173A31; --gold:#E9B657; --gold-soft:#3A2E17;
+  --risk:#EE8A72; --risk-soft:#3D221B; --term:#07100F; --term-fg:#D5E5E0; --term-dim:#7F9792; --term-ok:#63D1A8;
+  --p1:#7DA6F2; --p2:#5CC9A5; --p3:#B497EE; --p4:#EE8A72; --p5:#E9B657; --p6:#5FC6D3; --p7:#EE8CC2;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.3); color-scheme:dark}

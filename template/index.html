@@ -1,0 +1,518 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Story Page</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="../src/tokens.css">
+<link rel="stylesheet" href="../src/story.css">
+</head>
+<body>
+<!-- Starter story. It uses every component once, and its text explains the system it is built with.
+     Copy this file, keep the shell, replace the chapters. All numbers here are examples. -->
+
+<div class="progress" aria-hidden="true"><i id="prog"></i></div>
+<div class="shell">
+<nav class="rail" id="rail" aria-label="Story chapters">
+  <div class="brand"><div class="dot">S</div><div><b>Story Page</b><span>A design language for pitches</span></div></div>
+  <ol class="toc" id="toc">
+    <li data-ch="ch1"><a href="#ch1"><span class="n">01</span>The problem</a>
+      <ul><li><a href="#broke">Where decks break</a></li><li><a href="#needs">Five things a pitch needs</a></li></ul></li>
+    <li data-ch="ch2"><a href="#ch2"><span class="n">02</span>The turning point</a>
+      <ul><li><a href="#origin">From deck to story</a></li><li><a href="#question">The question</a></li></ul></li>
+    <li data-ch="ch3"><a href="#ch3"><span class="n">03</span>What it is</a>
+      <ul><li><a href="#whatis">One page, one column</a></li><li><a href="#parts">Three parts</a></li><li><a href="#how">How it works</a></li><li><a href="#flow">From draft to meeting</a></li></ul></li>
+    <li data-ch="ch4"><a href="#ch4"><span class="n">04</span>Proof</a>
+      <ul><li><a href="#week">One real week</a></li><li><a href="#reply">A real thread</a></li><li><a href="#numbers">In numbers</a></li><li><a href="#learned">What we learned</a></li></ul></li>
+    <li data-ch="ch5"><a href="#ch5"><span class="n">05</span>Who reads it</a>
+      <ul><li><a href="#p-presenter">The presenter</a></li><li><a href="#p-builder">The builder</a></li><li class="toc-in"><a href="#b-kit">Sources and outputs</a></li><li class="toc-in"><a href="#b-outline">The outline review</a></li><li class="toc-in"><a href="#b-review">AI review, human call</a></li><li class="toc-in"><a href="#b-gates">Publishing gates</a></li><li><a href="#p-founder">The founder</a></li><li><a href="#together">How it fits</a></li></ul></li>
+    <li data-ch="ch6"><a href="#ch6"><span class="n">06</span>Honest by design</a>
+      <ul><li><a href="#layers">The layers</a></li></ul></li>
+    <li data-ch="ch7"><a href="#ch7"><span class="n">07</span>What it takes</a>
+      <ul><li><a href="#bill">The time bill</a></li><li><a href="#flat">Why it stays small</a></li></ul></li>
+    <li data-ch="ch8"><a href="#ch8"><span class="n">08</span>The ask</a>
+      <ul><li><a href="#phases">Phases</a></li></ul></li>
+  </ol>
+  <div class="rail-foot"><span><span class="kbd">J</span> <span class="kbd">K</span> present step by step</span><span><span class="kbd">Esc</span> leave presenting</span><span>Team · Month Year</span></div>
+</nav>
+<button class="menu-btn" id="menuBtn" aria-controls="rail" aria-expanded="false">Contents</button>
+<div class="present-hint" aria-live="polite"><span>Presenting</span><span><span class="kbd">J</span> next</span><span><span class="kbd">K</span> back</span><span><span class="kbd">Esc</span> exit</span></div>
+
+<main>
+<div class="col">
+
+<header class="hero" id="top">
+  <p class="eyebrow">Team · Month Year</p>
+  <h1>Tell the pitch as a <em>story</em>, not a deck</h1>
+  <p class="lede">A short story in eight parts: why slides lose a room, what a story page is, how it is built, and what it asks of the people who make one.</p>
+  <div class="hero-meta"><span>Presented by Your Name</span><span>About 15 minutes</span><span>One HTML file</span></div>
+  <div class="scroll-cue"><i></i>Scroll to begin</div>
+</header>
+
+<!-- 01 PROBLEM -->
+<section class="chapter" id="ch1">
+  <div class="ch-head rv"><span class="ch-num">01</span><h2>Decks lose the room halfway through</h2><p>The content was never the problem. The order, the proof and the pace were.</p></div>
+
+  <div class="sub" id="broke">
+    <h3>Where decks break</h3>
+    <div class="grid4 stagger">
+      <div class="card" style="--i:0"><div class="ico risk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M8 21h8"/></svg></div><h4>One idea per slide</h4><p>The argument is cut into pieces, and the thread between them lives only in the presenter's head.</p></div>
+      <div class="card" style="--i:1"><div class="ico risk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg></div><h4>Proof is a screenshot</h4><p>A blurry image of a chat or a dashboard, too small to read from the back of the room.</p></div>
+      <div class="card" style="--i:2"><div class="ico risk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 2 20h20z"/><path d="M12 10v4M12 17v.5"/></svg></div><h4>Real and planned blur</h4><p>What works today and what is hoped for look the same, so the audience trusts neither.</p></div>
+      <div class="card" style="--i:3"><div class="ico risk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="16" r="3"/><path d="M10 10l5 4"/></svg></div><h4>Dead after the meeting</h4><p>Without the presenter, the deck makes no sense to the people it is forwarded to.</p></div>
+    </div>
+  </div>
+
+  <div class="sub" id="needs">
+    <h3>Five things a pitch needs</h3>
+    <p class="sub-lede">Each problem above comes back to one of these five. A story page is built to cover all of them in a single file.</p>
+    <div class="pillars stagger">
+      <div class="pillar" style="--i:0;--c:var(--p1)">
+        <div class="nh"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h10"/></svg></div><div><h4>Narrative</h4><p>One argument, in order, from problem to ask.</p></div></div>
+        <ul><li>Chapters are numbered and read top to bottom</li><li>Every chapter title is a full sentence</li></ul>
+        <div class="tags"><span class="pill live">Built in</span></div>
+      </div>
+      <div class="pillar" style="--i:1;--c:var(--p2)">
+        <div class="nh"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5 9-10"/></svg></div><div><h4>Evidence</h4><p>Proof rebuilt as live, readable mocks.</p></div></div>
+        <ul><li>Chats, terminals and documents as real text</li><li>Charts drawn in SVG, never pasted images</li></ul>
+        <div class="tags"><span class="pill live">Built in</span></div>
+      </div>
+      <div class="pillar" style="--i:2;--c:var(--p3)">
+        <div class="nh"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16v.5"/></svg></div><div><h4>Honesty</h4><p>Real, planned and illustrative are always marked.</p></div></div>
+        <ul><li>Live and planned pills on every claim</li><li>"Illustrative" on every made-up number</li></ul>
+        <div class="tags"><span class="pill live">Built in</span></div>
+      </div>
+      <div class="pillar" style="--i:3;--c:var(--p5)">
+        <div class="nh"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M9 2h6"/></svg></div><div><h4>Pace</h4><p>The presenter controls what the room sees.</p></div></div>
+        <ul><li>J and K step one block at a time</li><li>Everything else dims, so nobody reads ahead</li></ul>
+        <div class="tags"><span class="pill live">Presenter mode</span><span class="pill plan">Speaker notes</span></div>
+      </div>
+      <div class="pillar" style="--i:4;--c:var(--p6)">
+        <div class="nh"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></div><div><h4>Reach</h4><p>It still works after the meeting, on any screen.</p></div></div>
+        <ul><li>Reads alone, without the presenter</li><li>Works on a phone, in light and dark</li></ul>
+        <div class="tags"><span class="pill live">Built in</span></div>
+      </div>
+    </div>
+    <div class="hub rv"><span class="hub-dots"><i style="--c:var(--p1)"></i><i style="--c:var(--p2)"></i><i style="--c:var(--p3)"></i><i style="--c:var(--p5)"></i><i style="--c:var(--p6)"></i></span><b>Story Page</b><span>one scrolling file that covers all five</span></div>
+  </div>
+</section>
+
+<!-- 02 TURNING POINT -->
+<section class="chapter" id="ch2">
+  <div class="ch-head rv"><span class="ch-num">02</span><h2>It started with one pitch that had to stand on its own</h2><p>The deck was going to be forwarded to people who would never hear it presented.</p></div>
+
+  <div class="sub" id="origin">
+    <h3>From deck to story</h3>
+    <div class="steps stagger">
+      <div class="step" style="--i:0"><span class="when">Step 1 · Done</span><h4>One page</h4><p>The deck became a single scrolling page, with the argument written out in full sentences.</p></div>
+      <div class="step" style="--i:1"><span class="when">Step 2 · Done</span><h4>A system</h4><p>The parts that worked became tokens, components and rules, so the next page starts from them.</p></div>
+      <div class="step next" style="--i:2"><span class="when">Step 3 · Next</span><h4>Every pitch</h4><p>Any team can tell its story the same way, and readers learn the format once.</p></div>
+    </div>
+  </div>
+
+  <div class="sub" id="question">
+    <p class="quote rv">Once the first one landed, the question was obvious. <span>What if every pitch read like this?</span></p>
+  </div>
+</section>
+
+<!-- 03 WHAT IT IS -->
+<section class="chapter" id="ch3">
+  <div class="ch-head rv"><span class="ch-num">03</span><h2>A story page is one file that reads top to bottom</h2><p>No slides, no build step, no framework.</p></div>
+
+  <div class="sub" id="whatis">
+    <div class="split">
+      <div class="stack rv">
+        <span class="lbl">What it is</span>
+        <p class="big-def">A story page is <mark>an argument you scroll</mark>, not a set of slides you click. The proof sits next to the claim it supports.</p>
+        <p style="color:var(--muted)">Technical and non-technical readers use it the same way: open the link and scroll.</p>
+      </div>
+      <div class="chat rv" aria-label="Example chat exchange">
+        <div class="chat-head"><span># team-pitch</span><span class="tag">example</span></div>
+        <div class="chat-body">
+          <div class="msg" style="--i:0"><span class="av" style="--c:var(--p1)">PR</span><div><div class="who">Presenter<span class="t">16:09</span></div><p>Sharing the link before the meeting so people can read ahead</p></div></div>
+          <div class="msg" style="--i:1"><span class="av" style="--c:var(--p3)">FO</span><div><div class="who">Founder<span class="t">18:45</span></div><p>Read it on my phone. Chapter 4 answered my question before I asked it.</p></div></div>
+          <div class="msg" style="--i:2"><span class="av hl">S</span><div><div class="who">Story bot<span class="bot">APP</span><span class="t">18:46</span></div><p><b>team-pitch</b> · read by 6 people</p><ul><li>Most time spent: chapter 7, what it takes</li><li>Questions left as comments: 2</li></ul><p class="meta">example only</p></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub" id="parts">
+    <h3>Three parts</h3>
+    <div class="grid3 accented stagger">
+      <div class="card" style="--i:0"><span class="lbl">Part 1</span><h4>Tokens</h4><p>Colours, fonts, shadows and easing, with a light and a dark value for each.</p></div>
+      <div class="card" style="--i:1"><span class="lbl">Part 2</span><h4>Components</h4><p>Cards, mocks, charts, timelines and diagrams, each with one job and one entrance.</p></div>
+      <div class="card" style="--i:2"><span class="lbl">Part 3</span><h4>Behaviour</h4><p>Reveal on scroll, the chapter rail, reading progress and presenter mode.</p></div>
+    </div>
+  </div>
+
+  <div class="sub" id="how">
+    <h3>How it works</h3>
+    <p class="sub-lede">The author writes one HTML file from the template. A script inlines the styles, and the file is shared as a single link that works in any browser.</p>
+    <div class="arch rv">
+      <svg viewBox="0 0 900 300" role="img" aria-label="The author writes a page from the template; the page is inlined and shared with readers">
+        <rect class="box" x="20" y="100" width="200" height="100" rx="14"/>
+        <text class="t" x="40" y="138">Author</text>
+        <text x="40" y="162">Writes chapters</text>
+        <text x="40" y="182">from the template</text>
+        <rect class="box hl" x="350" y="80" width="200" height="140" rx="16"/>
+        <text class="t inv" x="370" y="118">Story page</text>
+        <text class="inv" x="370" y="144">One HTML file</text>
+        <text class="inv" x="370" y="166">Tokens + components</text>
+        <text class="inv" x="370" y="188">No build step</text>
+        <rect class="box" x="680" y="30" width="200" height="100" rx="14"/>
+        <text class="t" x="700" y="68">Meeting</text>
+        <text x="700" y="92">Presenter mode,</text>
+        <text x="700" y="112">J and K</text>
+        <rect class="box" x="680" y="170" width="200" height="100" rx="14"/>
+        <text class="t" x="700" y="208">Readers</text>
+        <text x="700" y="232">Phone or desktop,</text>
+        <text x="700" y="252">light or dark</text>
+        <path class="flow" d="M220 150 H350"/>
+        <path class="flow" d="M550 130 C610 130 620 80 680 80"/>
+        <path class="flow" d="M550 170 C610 170 620 220 680 220"/>
+        <text class="m" x="236" y="140">writes and checks</text>
+        <text class="m" x="574" y="70">presents</text>
+        <text class="m" x="574" y="262">shares the link</text>
+      </svg>
+    </div>
+  </div>
+
+  <div class="sub" id="flow">
+    <h3>From draft to meeting</h3>
+    <p class="sub-lede">Every stage works on the same file.</p>
+    <div class="stages stagger">
+      <div class="stg" style="--i:0"><span class="code">STAGE 1</span><b>Collect</b><span>Gather the facts, the numbers and their sources.</span></div>
+      <div class="stg" style="--i:1"><span class="code">STAGE 2</span><b>Outline</b><span>One sentence per chapter, problem to ask.</span></div>
+      <div class="stg" style="--i:2"><span class="code">STAGE 3</span><b>Review</b><span>Someone checks the outline before any design.</span></div>
+      <div class="stg" style="--i:3"><span class="code">STAGE 4</span><b>Build</b><span>Chapters from the template, mocks from real text.</span></div>
+      <div class="stg" style="--i:4"><span class="code">STAGE 5</span><b>Check</b><span>Light, dark and phone width, by eye.</span></div>
+      <div class="stg" style="--i:5"><span class="code">STAGE 6</span><b>Present</b><span>J and K in the room, the link afterwards.</span></div>
+      <div class="stg plan" style="--i:6"><span class="code">STAGE 7 · NEXT</span><b>Measure</b><span>Which chapters people actually read.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 PROOF -->
+<section class="chapter" id="ch4">
+  <div class="ch-head rv"><span class="ch-num">04</span><h2>It has already carried a real pitch</h2><p>One week, from first draft to the meeting. Dates are examples.</p></div>
+
+  <div class="sub" id="week">
+    <h3>One real week</h3>
+    <div class="tl stagger">
+      <div class="e" style="--i:0"><span class="d">Mon · 11:00</span><h4>The facts are collected</h4><p>Numbers, sources and the open questions go into one list before anything is designed.</p></div>
+      <div class="e" style="--i:1"><span class="d">Mon · 15:30</span><h4>The outline is reviewed</h4><p>Eight chapter sentences are read aloud. Two are merged, one is cut.</p></div>
+      <div class="e hl" style="--i:2"><span class="d">Tue · 10:00</span><h4>The page is built from the template</h4><p>Filled dots mark the moments the system did the work; hollow dots are people.</p></div>
+      <div class="e hl" style="--i:3"><span class="d">Wed · 17:00</span><h4>Checked in three views</h4><p>Light, dark and 390 px wide. One table scrolls inside its own frame; the page does not.</p></div>
+      <div class="e" style="--i:4"><span class="d">Fri · 11:00</span><h4>Presented with J and K</h4><p>Fifteen minutes, one block at a time, then the link went to the people who missed it.</p></div>
+    </div>
+  </div>
+
+  <div class="sub" id="reply">
+    <h3>A real thread</h3>
+    <p class="sub-lede">A thread mock shows a conversation as readable text, with a separator for time passing.</p>
+    <div class="chat rv">
+      <div class="chat-head"><span># team-pitch · thread</span><span class="tag">example, shortened</span></div>
+      <div class="chat-body">
+        <div class="msg" style="--i:0"><span class="av" style="--c:var(--p2)">BU</span><div><div class="who">Builder<span class="t">15:50</span></div><p><span class="at">@Reviewer</span> can you check chapter 7 before Friday?</p><span class="file">📄 story-page.html</span></div></div>
+        <div class="msg" style="--i:1"><span class="av" style="--c:var(--p5)">RE</span><div><div class="who">Reviewer<span class="t">16:20</span></div><p>Two things:</p><ul><li>The cost number has no source yet</li><li>"Planned" and "live" look the same on the phone</li></ul></div></div>
+        <div class="sep" style="--i:2">next morning</div>
+        <div class="msg" style="--i:3"><span class="av" style="--c:var(--p2)">BU</span><div><div class="who">Builder<span class="t">09:10</span></div><p>Source added in the footer, and the pills now wrap under the title on small screens.</p></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub" id="numbers">
+    <h3>In numbers</h3>
+    <div class="stats stagger">
+      <div class="stat" style="--i:0"><b><span data-count="1">1</span></b><span>HTML file to share</span></div>
+      <div class="stat" style="--i:1"><b><span data-count="8">8</span></b><span>chapters, problem to ask</span></div>
+      <div class="stat" style="--i:2"><b><span data-count="3">3</span></b><span>views checked before sharing</span></div>
+      <div class="stat" style="--i:3"><b>0</b><span>build steps or frameworks</span></div>
+    </div>
+  </div>
+
+  <div class="sub" id="learned">
+    <h3>What we learned</h3>
+    <div class="grid3 caveats stagger">
+      <div class="card" style="--i:0"><span class="pill plan">Watch for</span><h4>Too many mocks</h4><p>A scene per paragraph slows the read. One scene per point is enough.</p></div>
+      <div class="card" style="--i:1"><span class="pill plan">Watch for</span><span class="pill risk">Trust</span><h4>Unmarked numbers</h4><p>One made-up number without a label costs the credibility of every real one.</p></div>
+      <div class="card" style="--i:2"><span class="pill live">Worked</span><h4>Reading ahead</h4><p>People who read the link first asked better questions in the room.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 PEOPLE -->
+<section class="chapter" id="ch5">
+  <div class="ch-head rv"><span class="ch-num">05</span><h2>Three people, one page</h2><p>Each persona gets a before and after, a scene, and live or planned pills.</p></div>
+
+  <!-- Presenter -->
+  <article class="persona" id="p-presenter">
+    <div class="p-head rv"><div class="p-av" style="--c:var(--p1)">P</div><div><h3>The presenter</h3><p class="role">Tells the story in the room</p></div><div class="p-pills"><span class="pill live">Live: presenter mode</span><span class="pill plan">Planned: speaker notes</span></div></div>
+    <div class="scene">
+      <div class="stack">
+        <div class="ba rv">
+          <div class="row"><span class="lbl">Before</span><p class="before">Clicked through slides and filled the gaps from memory, hoping nobody read ahead.</p></div>
+          <div class="row"><span class="lbl">Now</span><ul><li>Presses J to bring up one block at a time</li><li>Tall blocks page through before moving on</li><li>Presses Esc to hand the page back to the room</li></ul></div>
+        </div>
+        <div class="chart rv">
+          <div class="chart-cap" style="margin:0 0 8px"><span class="lbl">Readers per day after the meeting</span><span class="ill">Illustrative</span></div>
+          <svg viewBox="0 0 420 190" role="img" aria-label="Readers per day, rising from 2 on day 1 to 14 on day 7">
+            <line class="ax" x1="36" y1="160" x2="410" y2="160"/>
+            <line class="ax" x1="36" y1="20" x2="410" y2="20" stroke-dasharray="2 4"/>
+            <text x="14" y="24">15</text><text x="22" y="164">0</text>
+            <rect class="bar" style="--i:0" x="50" y="141" width="36" height="19"/>
+            <rect class="bar" style="--i:1" x="102" y="123" width="36" height="37"/>
+            <rect class="bar" style="--i:2" x="154" y="113" width="36" height="47"/>
+            <rect class="bar" style="--i:3" x="206" y="95" width="36" height="65"/>
+            <rect class="bar" style="--i:4" x="258" y="76" width="36" height="84"/>
+            <rect class="bar" style="--i:5" x="310" y="58" width="36" height="102"/>
+            <rect class="bar last" style="--i:6" x="362" y="29" width="36" height="131"/>
+            <text x="58" y="178">D1</text><text x="110" y="178">D2</text><text x="162" y="178">D3</text><text x="214" y="178">D4</text><text x="266" y="178">D5</text><text x="318" y="178">D6</text><text x="370" y="178">D7</text>
+          </svg>
+        </div>
+      </div>
+      <div class="chat rv">
+        <div class="chat-head"><span>Direct message</span><span class="tag">example</span></div>
+        <div class="chat-body">
+          <div class="msg" style="--i:0"><span class="av" style="--c:var(--p1)">PR</span><div><div class="who">Presenter<span class="t">10:58</span></div><p>Starting in two minutes. Is the link the latest version?</p></div></div>
+          <div class="msg" style="--i:1"><span class="av" style="--c:var(--p2)">BU</span><div><div class="who">Builder<span class="t">10:59</span></div><p>Yes. Same link, updated in place. Press J to start.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Builder -->
+  <article class="persona" id="p-builder">
+    <div class="p-head rv"><div class="p-av" style="--c:var(--p2)">B</div><div><h3>The builder</h3><p class="role">Writes and checks the page</p></div><div class="p-pills"><span class="pill live">Live: template, checks</span></div></div>
+    <div class="scene">
+      <div class="stack">
+        <div class="ba rv">
+          <div class="row"><span class="lbl">Before</span><p class="before">Started each deck from a blank file and fixed the layout by hand for every screen.</p></div>
+          <div class="row"><span class="lbl">Now</span><ul><li>Copies the template and replaces the chapters</li><li>Uses only tokens, so dark mode comes free</li><li>Renders three views before sharing</li></ul></div>
+        </div>
+        <div class="chart rv">
+          <div class="chart-cap" style="margin:0 0 8px"><span class="lbl">Page weight against the limit</span><span class="ill">Illustrative</span></div>
+          <svg viewBox="0 0 420 190" role="img" aria-label="Page weight grows slowly and stays under the limit">
+            <line class="ax" x1="36" y1="160" x2="410" y2="160"/>
+            <line class="lim" x1="36" y1="40" x2="410" y2="40"/>
+            <text x="300" y="34">limit</text>
+            <path class="line" d="M40 150 L100 138 L160 128 L220 120 L280 110"/>
+            <g class="proj-wrap"><path class="proj" d="M280 110 L340 98 L400 86"/></g>
+            <text x="40" y="178">v1</text><text x="160" y="178">v3</text><text x="280" y="178">v5</text><text x="380" y="178">next</text>
+          </svg>
+        </div>
+      </div>
+      <div class="term rv" aria-label="Example terminal session">
+        <div class="bar"><i></i><i></i><i></i></div>
+        <div class="ln" style="--i:0"><span class="d">$</span> python3 scripts/inline.py template/index.html</div>
+        <div class="ln" style="--i:1"><span class="ok">✓</span> wrote dist/index.html <span class="d">(one file)</span></div>
+        <div class="ln" style="--i:2"><span class="d">$</span> render light · dark · 390px</div>
+        <div class="ln" style="--i:3"><span class="ok">✓</span> light <span class="ok">✓</span> dark</div>
+        <div class="ln" style="--i:4"><span class="y">!</span> 390px: table wider than column</div>
+        <div class="ln" style="--i:5"><span class="d">  scrolls inside .swim, page width ok</span></div>
+        <div class="ln" style="--i:6"><span class="r">✗</span> footer cites no source for chapter 7</div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Builder continuation blocks: siblings of the persona, never nested inside it -->
+  <div class="sub cont" id="b-kit">
+    <span class="cont-tag" style="--c:var(--p2)"><i></i>The builder</span>
+    <h3>Sources in, one page out</h3>
+    <p class="sub-lede">A hub-and-spoke view: what feeds the work on the left, what it reaches on the right.</p>
+    <div class="kit rv">
+      <div class="kcol">
+        <span class="lbl">Sources</span>
+        <div class="k" style="--i:0"><b>Facts list</b><span>Every number with its source</span></div>
+        <div class="k" style="--i:1"><b>Outline</b><span>One sentence per chapter</span></div>
+        <div class="k" style="--i:2"><b>Design spec</b><span>Tokens, components, rules</span></div>
+      </div>
+      <div class="core"><div class="agent"><b>Builder</b><span>writes, checks, decides</span></div></div>
+      <div class="kcol">
+        <span class="lbl">Outputs</span>
+        <div class="k" style="--i:3"><b>Story page</b><span>One HTML file</span><i class="acc">Shared by link</i></div>
+        <div class="k" style="--i:4"><b>Presenter mode</b><span>J and K in the room</span><i class="acc">No extra file</i></div>
+        <div class="k" style="--i:5"><b>Screenshots</b><span>Light, dark, phone</span><i class="acc">Before every share</i></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub cont" id="b-outline">
+    <span class="cont-tag" style="--c:var(--p2)"><i></i>The builder</span>
+    <h3>The outline is reviewed before anything is designed</h3>
+    <p class="sub-lede">A document mock with review comments, next to a numbered flow.</p>
+    <div class="grid2">
+      <div class="doc rv">
+        <div class="doc-head"><span>outline.md</span><span class="tag">example</span></div>
+        <div class="doc-body">
+          <p class="h"># Outline</p>
+          <p><b>01</b>Decks lose the room halfway through</p>
+          <p><b>02</b>It started with one pitch that had to stand alone</p>
+          <p><b>03</b>A story page is one file that reads top to bottom</p>
+          <div class="rc" style="--i:0"><span class="av" style="--c:var(--gold)">RE</span><div><b>Reviewer</b><p>02 and 03 say the same thing. Merge them, and add a chapter on what it costs.</p></div></div>
+          <div class="rc me" style="--i:1;--c:var(--p2)"><span class="av" style="--c:var(--p2)">BU</span><div><b>Builder · v2</b><p>Merged, and added 07 "What it takes".</p></div></div>
+          <div class="rc ok" style="--i:2"><span class="av" style="--c:var(--accent)">✓</span><div><b>Approved</b><p>Build it.</p></div></div>
+        </div>
+      </div>
+      <div class="flow4">
+        <div class="f"><span class="n">1</span><div><b>Outline</b><p>One sentence per chapter.</p></div></div>
+        <div class="f"><span class="n">2</span><div><b>Review</b><p>Someone else challenges the order and the claims.</p></div></div>
+        <div class="f"><span class="n">3</span><div><b>Build</b><p>One chapter at a time, from the template.</p></div></div>
+        <div class="f"><span class="n">4</span><div><b>Check</b><p>Three views, by eye, before sharing.</p></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub cont" id="b-review">
+    <span class="cont-tag" style="--c:var(--p2)"><i></i>The builder</span>
+    <h3>AI suggests, the builder decides</h3>
+    <p class="sub-lede">A review panel: each suggestion is kept or dropped by a person, and dropped ones stay visible with a reason.</p>
+    <div class="prv rv">
+      <div class="doc-head"><span>Review of story-page.html</span><span class="tag">example</span></div>
+      <div class="prv-body">
+        <div class="pi kept" style="--i:0"><span class="st">Posted</span><p>Chapter 7 cites a cost with no source in the footer.</p></div>
+        <div class="pi kept" style="--i:1"><span class="st">Posted</span><p>Two pills in chapter 5 have no live or planned class.</p></div>
+        <div class="pi drop" style="--i:2"><span class="st">Dropped</span><p>Add a chart to every chapter. <em>Builder: one scene per point is enough.</em></p></div>
+        <div class="pi verdict" style="--i:3"><span class="st">Verdict</span><p>Changes requested: 2 of 3 suggestions kept.</p></div>
+      </div>
+    </div>
+    <div class="grid3 stagger" style="margin-top:24px">
+      <div class="card" style="--i:0"><span class="lbl">AI</span><h4>Reads everything</h4><p>Every chapter, every number, every link, against the spec.</p></div>
+      <div class="card" style="--i:1"><span class="lbl">Builder</span><h4>Makes the call</h4><p>Keeps what is right, drops what is not, and says why.</p></div>
+      <div class="card" style="--i:2"><span class="lbl">Team</span><h4>Learns the rules</h4><p>Dropped suggestions become clearer rules in the spec.</p></div>
+    </div>
+  </div>
+
+  <div class="sub cont" id="b-gates">
+    <span class="cont-tag" style="--c:var(--p2)"><i></i>The builder</span>
+    <h3>Nothing is shared until it passes the gates</h3>
+    <p class="sub-lede">Ordered checks, each with an owner.</p>
+    <div class="scene">
+      <div class="gates rv">
+        <div class="gate" style="--i:0"><span class="num">1</span><div><b>Facts have sources</b><p>Every number traces to a line in the footer.</p></div><span class="own">Builder</span></div>
+        <div class="gate" style="--i:1"><span class="num">2</span><div><b>Outline approved</b><p>Someone else read the chapter sentences first.</p></div><span class="own">Reviewer</span></div>
+        <div class="gate" style="--i:2"><span class="num">3</span><div><b>Tokens only</b><p>No raw colours outside tokens.css.</p></div><span class="own">Builder</span></div>
+        <div class="gate" style="--i:3"><span class="num">4</span><div><b>Three views checked</b><p>Light, dark and phone width, by eye.</p></div><span class="own">Builder</span></div>
+        <div class="gate" style="--i:4"><span class="num">5</span><div><b>Marked honestly</b><p>Live, planned and illustrative on every claim.</p></div><span class="own">Reviewer</span></div>
+      </div>
+      <div class="stack">
+        <div class="card rv"><span class="lbl" style="color:var(--accent)">Rules it keeps</span><ul class="rules"><li>No invented numbers</li><li>No names of private people, ratings or ids</li><li>Proof is text, not screenshots</li><li>Every animation has a still state</li></ul></div>
+        <div class="card rv"><span class="lbl">Written into the spec</span><p>"Only state facts you can source. Mark everything else as illustrative."</p><p class="note-line">See DESIGN.md, section 15.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Founder -->
+  <article class="persona" id="p-founder">
+    <div class="p-head rv"><div class="p-av" style="--c:var(--p3)">F</div><div><h3>The founder</h3><p class="role">Decides what to fund</p></div><div class="p-pills"><span class="pill live">Live: reads the link</span><span class="pill plan">Planned: portfolio view</span></div></div>
+    <div class="scene">
+      <div class="stack">
+        <div class="ba rv">
+          <div class="row"><span class="lbl">Before</span><p class="before">Saw a deck once, in a meeting, and decided from memory a week later.</p></div>
+          <div class="row"><span class="lbl">Now</span><ul><li>Reads ahead on a phone</li><li>Sees what is real and what is planned at a glance</li><li>Comes back to the same link before deciding</li></ul></div>
+        </div>
+      </div>
+      <div class="chart rv">
+        <div class="chart-cap" style="margin:0 0 8px"><span class="lbl">Pitches in flight</span><span class="ill">Illustrative</span></div>
+        <div style="overflow-x:auto">
+          <table class="pf">
+            <tr><th>Pitch</th><th>Stage</th><th style="width:26%">Progress</th><th>Meeting</th><th>Result</th></tr>
+            <tr><td><b>project-a</b></td><td>Build<span class="st">chapter 5</span></td><td><div class="prog-b"><i style="--w:60%;--i:0"></i></div></td><td>Next week</td><td><span class="roi na">After meeting</span></td></tr>
+            <tr><td><b>project-b</b></td><td>Check<span class="st">phone view</span></td><td><div class="prog-b risk"><i style="--w:85%;--i:1"></i></div></td><td>Tomorrow · at risk</td><td><span class="roi na">After meeting</span></td></tr>
+            <tr><td><b>project-c</b></td><td>Done<span class="st">presented</span></td><td><div class="prog-b"><i style="--w:100%;--i:2"></i></div></td><td>Held</td><td><span class="roi up">Approved</span></td></tr>
+            <tr><td><b>project-d</b></td><td>Done<span class="st">presented</span></td><td><div class="prog-b"><i style="--w:100%;--i:3"></i></div></td><td>Held</td><td><span class="roi down">Not now</span></td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <div class="sub" id="together">
+    <h3>How it fits together</h3>
+    <p class="sub-lede">Where each person touches the page. Filled dots work today; dashed dots are planned.</p>
+    <div class="swim rv">
+      <table>
+        <tr><th>Person</th><th>Collect</th><th>Outline</th><th>Review</th><th>Build</th><th>Check</th><th>Present</th><th>Measure</th></tr>
+        <tr><td><b>Presenter</b></td><td><i class="dotc" style="--c:var(--p1);--i:0"></i></td><td><i class="dotc" style="--c:var(--p1);--i:1"></i></td><td></td><td></td><td></td><td><i class="dotc" style="--c:var(--p1);--i:2"></i></td><td><i class="dotc o" style="--c:var(--p1);--i:3"></i></td></tr>
+        <tr><td><b>Builder</b></td><td><i class="dotc" style="--c:var(--p2);--i:4"></i></td><td><i class="dotc" style="--c:var(--p2);--i:5"></i></td><td></td><td><i class="dotc" style="--c:var(--p2);--i:6"></i></td><td><i class="dotc" style="--c:var(--p2);--i:7"></i></td><td></td><td><i class="dotc o" style="--c:var(--p2);--i:8"></i></td></tr>
+        <tr><td><b>Reviewer</b></td><td></td><td></td><td><i class="dotc" style="--c:var(--p5);--i:9"></i></td><td></td><td><i class="dotc" style="--c:var(--p5);--i:10"></i></td><td></td><td></td></tr>
+        <tr><td><b>Founder</b></td><td></td><td></td><td></td><td></td><td></td><td><i class="dotc" style="--c:var(--p3);--i:11"></i></td><td><i class="dotc o" style="--c:var(--p3);--i:12"></i></td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 06 HONEST BY DESIGN -->
+<section class="chapter" id="ch6">
+  <div class="ch-head rv"><span class="ch-num">06</span><h2>Honest by design</h2><p>Each layer stops a different way a pitch can mislead. They are in the format, not in a promise.</p></div>
+  <div class="sub" id="layers">
+    <div class="layers rv">
+      <div class="layer" style="--i:0"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5 9-10"/></svg></div><div><b>Live or planned, always</b><span>Every capability carries a pill. Filled is working today; gold is planned.</span></div><span class="lane">Pills</span></div>
+      <div class="layer" style="--i:1"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 2 20h20z"/><path d="M12 10v4M12 17v.5"/></svg></div><div><b>Illustrative is labelled</b><span>Any made-up number or mock carries "Illustrative" or "example" in its corner.</span></div><span class="lane">Labels</span></div>
+      <div class="layer" style="--i:2"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h10M4 18h7"/></svg></div><div><b>Sources in the footer</b><span>The last line of the page lists where every real number came from.</span></div><span class="lane">Footer</span></div>
+      <div class="layer" style="--i:3"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div><div><b>No private data</b><span>No ids, tokens, emails, ratings or names of people who did not agree to appear.</span></div><span class="lane">Content</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 COST -->
+<section class="chapter" id="ch7">
+  <div class="ch-head rv"><span class="ch-num">07</span><h2>What it takes</h2><p>The time to build one story page from the template. Example figures.</p></div>
+  <div class="sub" id="bill">
+    <div class="ledger">
+      <div class="rv" style="overflow-x:auto">
+        <table class="tbl">
+          <tr><th>Step</th><th>Basis</th><th class="r">Hours</th></tr>
+          <tr><td>Collect and outline</td><td>Facts list<small>with a source for each number</small></td><td class="r">2</td></tr>
+          <tr><td>Review</td><td>One reviewer<small>outline only, before design</small></td><td class="r">1</td></tr>
+          <tr><td>Build and check</td><td>From the template<small>three views by eye</small></td><td class="r">5</td></tr>
+          <tr class="total"><td>Total</td><td>one person, one reviewer</td><td class="r">8</td></tr>
+        </table>
+      </div>
+      <div class="counter rv">
+        <b><span data-count="8">8</span>h</b>
+        <span>for a full pitch, example only</span>
+        <span class="per" style="margin-top:14px">1 day</span>
+        <span>from facts to a shareable link</span>
+      </div>
+    </div>
+  </div>
+  <div class="sub" id="flat">
+    <h3>Why it stays small</h3>
+    <div class="grid4 stagger">
+      <div class="card" style="--i:0"><h4>No build step</h4><p>One file opens in any browser.</p></div>
+      <div class="card" style="--i:1"><h4>Tokens, not taste</h4><p>Colour and type are decided once, for both themes.</p></div>
+      <div class="card" style="--i:2"><h4>Components, not layouts</h4><p>Each chapter is assembled from parts that already work.</p></div>
+      <div class="card" style="--i:3"><h4>Checks, not hope</h4><p>Three screenshots catch most layout mistakes.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 ASK -->
+<section class="chapter" id="ch8">
+  <div class="ch-head rv"><span class="ch-num">08</span><h2>Grow it in phases</h2><p>Each phase is small, reversible and priced.</p></div>
+  <div class="sub" id="phases">
+    <div class="phases stagger">
+      <div class="phase" style="--i:0"><span class="ph">Phase 0</span><div><b>Keep going</b><p>Use the template for the next pitch.</p></div><span class="c">no change</span></div>
+      <div class="phase" style="--i:1"><span class="ph">Phase 1</span><div><b>Speaker notes</b><p>Notes that show only in presenter mode.</p></div><span class="c">+ 1 day</span></div>
+      <div class="phase" style="--i:2"><span class="ph">Phase 2</span><div><b>Read tracking</b><p>Which chapters people read, without tracking who.</p></div><span class="c">+ 2 days</span></div>
+      <div class="phase opt" style="--i:3"><span class="ph">Optional</span><div><b>More mocks</b><p>Email, calendar and spreadsheet scenes.</p></div><span class="c">as needed</span></div>
+    </div>
+  </div>
+  <div class="closing rv">
+    <h2>One page that tells the whole story, in order, on any screen.</h2>
+    <p>Suggested next step: build the next pitch from this template and compare it with the last deck.</p>
+  </div>
+  <p class="foot">Sources: list every real source here. In this template, all dates, numbers and people are examples.</p>
+</section>
+
+</div>
+</main>
+</div>
+<script src="../src/story.js"></script>
+</body>
+</html>
